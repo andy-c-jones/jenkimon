@@ -20,6 +20,8 @@ function getStatus(colour) {
         return "was-failed in-progress";
     case "blue_anime":
         return "was-built in-progress";
+    case "aborted_anime":
+        return "was-aborted in-progress";
     default:
         return "no-change";
     }
@@ -93,6 +95,9 @@ var Jobs = function(el) {
 $(function() {
     var jobs = new Jobs('ul');
     var baseUrl = get("url");
+    var theme = get("theme");
+
+    if (theme == "neon") {  $('body').addClass('neon'); }
 
     function getAllJobs() {
         var url = baseUrl + "/api/json?depth=2&tree=jobs[name,color,downstreamProjects[name],upstreamProjects[name],lastBuild[number,builtOn,duration,estimatedDuration,timestamp,result,actions[causes[shortDescription,upstreamProject,upstreamBuild],lastBuiltRevision[branch[name]]],changeSet[items[msg,author[fullName],date]]]]";
