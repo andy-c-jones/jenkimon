@@ -109,7 +109,7 @@ $(function() {
                 var time = moment.unix(job.lastBuild.timestamp / 1000);
                 var percentage = percentFinished(job.lastBuild.timestamp, job.lastBuild.estimatedDuration);
 
-                jobs.update({name: job.name, status: status, fromNow: time.fromNow(), percentage: percentage});
+                jobs.update({name: job.name, colour: job.color, fromNow: time.fromNow(), percentage: percentage});
             }
         }).fail(function() {
             console.log("Error contacting the build server");
